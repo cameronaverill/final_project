@@ -1,7 +1,2 @@
-<h1> Hello </h1>
+<h1> Hello <%= current_user.name %> </h1>
 
-<% if current_user.diet_id %>
-	<%= link_to 'Enter', edit_(current_user.diet.id)%>
-<% else %>
-	<%= link_to 'Enter', new_user_path(current_user)%>
-<%end%>

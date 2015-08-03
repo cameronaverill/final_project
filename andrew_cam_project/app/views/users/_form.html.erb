@@ -1,0 +1,6 @@
+<h1> Edit My Food Preferences </h1>
+
+<%= simple_form_for @user do |f| %>
+  <%= f.input :diet_id, :collection => Diet.all %>
+  <%= f.button :submit %>
+<% end %>

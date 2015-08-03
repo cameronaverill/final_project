@@ -1,4 +1,9 @@
-<%= simple_form_for @diet do |f| %>
-  <%= f.input :diet, as: :radio_buttons %>
-  <%= f.button :submit %>
+<% if @user.name.presence %>
+<h1> <%=@user.name%>'s Profile </h1>
+<% else %>
+<h1> Hello, <%=@user.email%>! <%=link_to 'Update your display name', edit_user_path(current_user) %> </h1>
+<%end%>
+
+<% if @user == current_user %>
+<%= link_to 'Edit Food Preferences', edit_user_path(current_user) %>
 <% end %>
