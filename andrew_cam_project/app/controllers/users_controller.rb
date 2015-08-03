@@ -3,6 +3,18 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @query = params[:query]
+    @diet = @user.diet.name
+
+    if @query.presence
+      #change number in the get request for demonstration; right now keep it at 1 for purpose of keeping requests down
+      response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/search?diet=#{@diet}&query=#{@query}&number=1" , 
+      headers:{
+      "X-Mashape-Key" => "8nBXNLJkYlmshUJzjuIrdsM2ciHpp1JTDOmjsnF4J7juwQORb1",
+      "Accept" => "application/json"
+      }
+      @dishes = (response.body)["results"]
+    end
   end
 
   def create

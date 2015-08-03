@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :diets  
   resources :users
+  resources :dishes
 
 
   # You can have the root of your site routed with "root"

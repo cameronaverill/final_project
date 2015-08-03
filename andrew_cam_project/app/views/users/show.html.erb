@@ -4,6 +4,31 @@
 <h1> Hello, <%=@user.email%>! <%=link_to 'Update your display name', edit_user_path(current_user) %> </h1>
 <%end%>
 
+<%= form_tag user_path(@user), method: :get do %>
+	<%= text_field_tag :query, @query %>
+	<%= submit_tag "Search" %>
+<% end %>
+
+<% if @dishes && @query.presence %>
+	<% @dishes.each do |dish| %>
+	<% if Dish.find_by(query_id: dish["id"]) %>
+		<% current_dish = Dish.find_by(query_id: dish["id"]) %>
+		<p> <%= link_to  "#{dish["title"]}", dish_path(current_dish) %> | <%= image_tag dish["image"] %></p>
+	<% else %>
+		<% new_response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/#{dish["id"]}/information",
+  			headers:{
+    		"X-Mashape-Key" => "8nBXNLJkYlmshUJzjuIrdsM2ciHpp1JTDOmjsnF4J7juwQORb1",
+    		"Accept" => "application/json"
+  			} %>
+  		<% response = new_response.body %>
+		<% current_dish = Dish.create! query_id: dish["id"], name: dish["title"], url: response["sourceUrl"] %>
+		<p> <%= link_to  "#{dish["title"]}", dish_path(current_dish) %> | <%= image_tag dish["image"] %></p>
+	<% end %>
+<%end%>
+<% else %>
+	<p>No results found, please search again</p>
+<% end %>
+
 <% if @user == current_user %>
 <%= link_to 'Edit Food Preferences', edit_user_path(current_user) %>
 <% end %>
