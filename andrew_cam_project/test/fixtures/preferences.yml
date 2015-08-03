@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  allowed_ingredient: MyString
+  excluded_ingredient: MyString
+  allowed_allergy: MyString
+  allowed_diet: MyString
+  user_id: 
+
+two:
+  allowed_ingredient: MyString
+  excluded_ingredient: MyString
+  allowed_allergy: MyString
+  allowed_diet: MyString
+  user_id: 
