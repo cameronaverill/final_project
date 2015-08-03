@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Diet.destroy_all
+
+Diet.create! name: "pescetarian"
+Diet.create! name: "lacto vegetarian"
+Diet.create! name: "ovo vegetarian"
+Diet.create! name: "vegetarian"
+Diet.create! name: "vegan"
+
