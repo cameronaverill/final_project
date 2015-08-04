@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   resources :diets  
   resources :users
   resources :users do
-    resources :dishes, only: [:create, :show]
+    resources :dishes, only: [:index]
   end
-  resources :dishes, only: [:show]
+  resources :dishes, only: [:show, :create]
 
 
   # You can have the root of your site routed with "root"

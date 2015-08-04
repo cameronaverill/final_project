@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804125314) do
+ActiveRecord::Schema.define(version: 20150804135346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,13 @@ ActiveRecord::Schema.define(version: 20150804125314) do
     t.string   "name"
     t.string   "url"
     t.integer  "query_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.boolean  "vegan"
-    t.integer  "servings"
-    t.boolean  "vegetarian"
-    t.boolean  "cheap"
-    t.boolean  "gluten_free"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "vegan",       default: false
+    t.integer  "servings",    default: 0
+    t.boolean  "vegetarian",  default: false
+    t.boolean  "cheap",       default: false
+    t.boolean  "gluten_free", default: false
   end
 
   create_table "dishes_users", id: false, force: :cascade do |t|
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20150804125314) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "diet_id"
     t.string   "name"
+    t.integer  "diet_id",                default: 0
   end
 
   add_index "users", ["diet_id"], name: "index_users_on_diet_id", using: :btree
