@@ -5,11 +5,14 @@ Rails.application.routes.draw do
 
   resources :diets  
   resources :users
-  resources :dishes
+  resources :users do
+    resources :dishes, only: [:create, :show]
+  end
+  resources :dishes, only: [:show]
 
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'users#current_user_home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

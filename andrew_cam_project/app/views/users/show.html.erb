@@ -21,13 +21,15 @@
     		"Accept" => "application/json"
   			} %>
   		<% response = new_response.body %>
-		<% current_dish = Dish.create! query_id: dish["id"], name: dish["title"], url: response["sourceUrl"] %>
+		<% current_dish = Dish.create query_id: dish["id"], name: dish["title"], url: response["sourceUrl"], vegan: response["vegan"], vegetarian: response["vegetarian"], cheap: response["cheap"], servings: response["servings"], gluent_free["glutenFree"] %>
 		<p> <%= link_to  "#{dish["title"]}", dish_path(current_dish) %> | <%= image_tag dish["image"] %></p>
 	<% end %>
 <%end%>
 <% else %>
 	<p>No results found, please search again</p>
 <% end %>
+
+<%= render @user.dishes %>
 
 <% if @user == current_user %>
 <%= link_to 'Edit Food Preferences', edit_user_path(current_user) %>

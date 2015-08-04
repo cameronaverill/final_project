@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @query = params[:query]
-    @diet = @user.diet.name
 
     if @query.presence
       #change number in the get request for demonstration; right now keep it at 1 for purpose of keeping requests down
@@ -42,6 +41,10 @@ class UsersController < ApplicationController
   	else
   		render 'edit'
   	end
+  end
+
+  def current_user_home
+    redirect_to current_user
   end
 
 

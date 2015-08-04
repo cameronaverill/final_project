@@ -1,0 +1,27 @@
+<h1> <%= @dish.name %> </h1>
+
+<hr>
+
+<h3> <%= link_to "#{@dish.url}", @dish.url %> </h3>
+
+<p> 
+<ul>
+	<% if @dish.vegetarian %>
+		<li> Vegetarian </li>
+	<%end%>
+	<% if @dish.vegan %>
+		<li> Vegan </li>
+	<%end%>
+	<% if @dish.gluten_free %>
+		<li> Gluten Free </li>
+	<%end%>
+	<% if @dish.cheap %>
+		<li> Cheap </li>
+	<%end%>
+</ul>
+
+<p> <strong> Servings: </strong><%= @dish.servings %> </p>
+
+
+
+
