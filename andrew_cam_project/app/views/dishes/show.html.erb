@@ -1,8 +1,8 @@
 <h1> <%= @dish.name %> </h1>
-
+<h1> <small> <%= link_to "#{@dish.url}", @dish.url %> </small> </h1>
 <hr>
 
-<h3> <%= link_to "#{@dish.url}", @dish.url %> </h3>
+
 
 <p> 
 <ul>
@@ -20,7 +20,7 @@
 	<%end%>
 </ul>
 
-<p> <strong> Servings: </strong><%= @dish.servings %> </p>
+<p> <strong> Servings: </strong><%= @dish.servings %>
 
 
 

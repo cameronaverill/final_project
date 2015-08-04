@@ -18,7 +18,7 @@ Diet.create! name: "vegetarian"
 Diet.create! name: "vegan"
 
 Dish.destroy_all
-test = Dish.create! name: "Test Dish", url: "https://www.google.com"
+test = Dish.create! name: "Test Dish", url: "https://www.google.com", vegan: true, vegetarian: true, cheap: false, servings: 4
 
 
 Dish.all.each { |dish| cameron.dishes << dish }
