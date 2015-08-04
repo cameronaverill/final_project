@@ -1,6 +1,6 @@
 <h3> Edit my display name </h3>
 
-<%= simple_form_for @user do |f| %>
-  <%= f.input :name%>
-  <%= f.button :submit %>
+<%= form_for @user do |f| %>
+<p> <%= f.label :name %>
+  <%= f.text_field :name%> </p>
 <% end %>
