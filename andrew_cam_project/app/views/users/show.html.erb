@@ -1,7 +1,7 @@
 <% if @user.name.presence %>
 <h1> <%=@user.name%>'s Profile </h1>
 <% else %>
-<h1> Hello, <%=@user.email%>! <%=link_to 'Update your display name', edit_user_path(current_user) %> </h1>
+<h1> Hello, <%=@user.email%>! <%=link_to 'Update your display name', edit_user_registration_path %> </h1>
 <%end%>
 
 <%= form_tag user_path(@user), method: :get do %>
