@@ -1,6 +1,8 @@
 <h1> Edit My Food Preferences </h1>
 
-<%= simple_form_for @user do |f| %>
-  <%= f.input :diet_id, :collection => Diet.all %>
-  <%= f.button :submit %>
+<%= bootstrap_form_for @user do |f| %>
+  <%= f.collection_radio_buttons :diet_id, Diet.all, :id, :name %> <br />
+  <%= f.collection_check_boxes :intolerance_ids, Intolerance.all, :id, :name%> </br> 
+  <%= f.submit %>
+</div>
 <% end %>

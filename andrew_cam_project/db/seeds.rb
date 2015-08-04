@@ -21,6 +21,18 @@ cameron = User.create! email: "cra2126@columbia.edu", password: "password", pass
 Dish.destroy_all
 test = Dish.create! name: "Test Dish", url: "https://www.google.com", vegan: true, vegetarian: true, cheap: false, servings: 4
 
+Intolerance.destroy_all
+Intolerance.create! name: "dairy"
+Intolerance.create! name: "egg"
+Intolerance.create! name: "gluten"
+Intolerance.create! name: "peanut"
+Intolerance.create! name: "sesame"
+Intolerance.create! name: "seafood"
+Intolerance.create! name: "shellfish"
+Intolerance.create! name: "soy"
+Intolerance.create! name: "sulfite"
+Intolerance.create! name: "tree nut"
+Intolerance.create! name: "wheat"
 
 Dish.all.each { |dish| cameron.dishes << dish }
 

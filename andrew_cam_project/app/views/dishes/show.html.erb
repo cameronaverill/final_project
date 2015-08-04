@@ -2,8 +2,6 @@
 <h1> <small> <%= link_to "#{@dish.url}", @dish.url %> </small> </h1>
 <hr>
 
-
-
 <p> 
 <ul>
 	<% if @dish.vegetarian %>
@@ -20,8 +18,9 @@
 	<%end%>
 </ul>
 
-<p> <strong> Servings: </strong><%= @dish.servings %>
+<p> <strong> Servings: </strong><%= @dish.servings %> <br />
 
+<%= link_to 'Back to Profile', user_path(current_user) %>
 
 
 

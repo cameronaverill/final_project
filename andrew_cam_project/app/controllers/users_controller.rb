@@ -60,7 +60,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-  	params.require(:user).permit(:diet_id, :name)
+  	params.require(:user).permit(:diet_id, :name, :intolerance_ids => [], :dish_ids => [])
   end
 
 

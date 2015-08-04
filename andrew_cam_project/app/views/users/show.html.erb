@@ -9,7 +9,7 @@
 	<%= submit_tag "Search" %>
 <% end %>
 
-<% if @dishes && @query.presence %>
+<% if @dishes.presence && @query.presence %>
 	<% @dishes.each do |dish| %>
 	<% if Dish.find_by(query_id: dish["id"]) %>
 		<% current_dish = Dish.find_by(query_id: dish["id"]) %>
@@ -25,8 +25,9 @@
 		<p> <%= link_to  "#{dish["title"]}", dish_path(current_dish) %> | <%= image_tag dish["image"] %></p>
 	<% end %>
 <%end%>
-<% else %>
+<% elsif @query.presence %>
 	<p>No results found, please search again</p>
+<% else %>
 <% end %>
 
 <%= render @user.dishes %>

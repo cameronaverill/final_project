@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  resources :diets  
+  resources :diets, except: [:index] 
   resources :users
   resources :users do
     resources :dishes, only: [:index]
   end
   resources :dishes, only: [:show, :create]
+  resources :intolerances, except: [:index]
 
 
   # You can have the root of your site routed with "root"

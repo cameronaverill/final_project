@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
    belongs_to :diet
    has_and_belongs_to_many :dishes
+   has_and_belongs_to_many :intolerances
 end
