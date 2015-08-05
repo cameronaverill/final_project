@@ -6,13 +6,14 @@
 
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    background-color: rgba(102,156,154,0.9)
+    background-color: rgba(102,156,154,0.9);
 }
 .navbar {
-	background-color: #232323
+	background-color: #232323;
 }
 .thumbnail {
-background-color: #232323}
+background-color: #232323;
+}
 .hero-spacer {
     margin-top: 5px;
     background-color:
@@ -28,9 +29,6 @@ form {
   background: -moz-linear-gradient(bottom, rgba(0,0,0, 1), rgba(0,0,0,.4));
   padding: 10px;
   line-height: 28px;
-  
-  
-  
 }
 h1 {
 	text-align: center;
