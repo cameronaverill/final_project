@@ -16,7 +16,7 @@ class DishesController < ApplicationController
 
 	def add_dish
 		@dish = Dish.find(params[:id])
-		unless current_user.dishes.find(@dish.id)
+		if current_user.dishes.empty? || !(current_user.dishes.include?(@dish)) 
 	    	current_user.dishes << @dish
 	    end
 	    flash[:notice] = "Snack successfully saved"
