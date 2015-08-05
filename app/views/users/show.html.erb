@@ -24,7 +24,7 @@
   			} %>
   		<% response = new_response.body %>
 		<% current_dish = Dish.create query_id: dish["id"], name: dish["title"], url: response["sourceUrl"], vegan: response["vegan"], vegetarian: response["vegetarian"], cheap: response["cheap"], servings: response["servings"], gluten_free: response["glutenFree"], image: "https://webknox.com/recipeImages/#{response["image"]}" %>
-		<p> <%= link_to  "#{dish["title"]}", dish_path(current_dish) %> <%=link_to add_dish_dish_path(current_dish), method: :put, class: "btn btn-default btn-sm" do %>
+		<p> <%= link_to  "#{dish["title"]}", user_dish_path(@user, current_dish) %> <%=link_to add_dish_dish_path(current_dish), method: :put, class: "btn btn-default btn-sm" do %>
   	  Save Snack
   <%end %> </p>
 		<%= dish["image"] %>
@@ -34,8 +34,6 @@
 	<p>No results found, please search again</p>
 <% else %>
 <% end %>
-
-<%= render @user.dishes %>
 
 <% if @user == current_user %>
 <%= link_to 'Edit Food Preferences', edit_user_path(current_user) %>
@@ -56,7 +54,7 @@
 
 
         <!-- Page Features -->
-        <% @dishes.each_slice(3) do |row| %>
+        <% @user_dishes.each_slice(3) do |row| %>
         <div class="row text-center">
         	<% row.each do |dish| %>
             <div class="col-md-4 hero-feature">

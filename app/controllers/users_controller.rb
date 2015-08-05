@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       end
     end
 
-    @dishes = @user.dishes.all
+    @user_dishes = @user.dishes.all
   end
 
   def create
