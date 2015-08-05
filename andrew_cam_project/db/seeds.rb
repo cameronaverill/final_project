@@ -16,7 +16,7 @@ Diet.create! name: "vegan"
 Diet.create! name: "none", id: 0
 
 User.destroy_all
-cameron = User.create! email: "cra2126@columbia.edu", password: "password", password_confirmation: "password"
+cameron = User.create! email: "cra2126@columbia.edu", password: "password", password_confirmation: "password", name: 'Cam'
 
 Dish.destroy_all
 test = Dish.create! name: "Test Dish", url: "https://www.google.com", vegan: true, vegetarian: true, cheap: false, servings: 4
@@ -35,4 +35,5 @@ Intolerance.create! name: "tree nut"
 Intolerance.create! name: "wheat"
 
 Dish.all.each { |dish| cameron.dishes << dish }
-
+cameron.intolerances << Intolerance.find_by(name: 'dairy')
+cameron.intolerances << Intolerance.find_by(name: 'peanut')
