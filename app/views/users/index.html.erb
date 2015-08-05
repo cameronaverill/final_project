@@ -1,4 +1,6 @@
-<h1> News Feed (Working Title) </h1>
+<h1> Snackers </h1>
 
 <% @users.each do |u| %>
+	<p> <%= link_to "#{u.name}", user_path(u) %> </p>
+<%end%>
 	
