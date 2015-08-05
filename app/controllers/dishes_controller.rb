@@ -1,5 +1,6 @@
 class DishesController < ApplicationController
 
+
 	def create
 		@dish = Dish.new(dish_params)
 		if @dish.save
