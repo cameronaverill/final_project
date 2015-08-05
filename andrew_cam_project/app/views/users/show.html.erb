@@ -13,7 +13,9 @@
 	<% @dishes.each do |dish| %>
 	<% if Dish.find_by(query_id: dish["id"]) %>
 		<% current_dish = Dish.find_by(query_id: dish["id"]) %>
-		<p> <%= link_to  "#{dish["title"]}", dish_path(current_dish) %> | <%= image_tag "#{dish["image"]}" %></p>
+		<p> <%= link_to  "#{current_dish.name}", dish_path(current_dish) %> | <%= image_tag "#{current_dish.image}" %> | <%=link_to add_dish_dish_path(current_dish), method: :put, class: "btn btn-default btn-sm" do %>
+  	  Add Dish
+  <%end %>  </p>
 	<% else %>
 		<% new_response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/#{dish["id"]}/information",
   			headers:{
@@ -21,8 +23,11 @@
     		"Accept" => "application/json"
   			} %>
   		<% response = new_response.body %>
-		<% current_dish = Dish.create query_id: dish["id"], name: dish["title"], url: response["sourceUrl"], vegan: response["vegan"], vegetarian: response["vegetarian"], cheap: response["cheap"], servings: response["servings"], gluten_free: response["glutenFree"] %>
-		<p> <%= link_to  "#{dish["title"]}", dish_path(current_dish) %> | <%= image_tag dish["image"] %></p>
+		<% current_dish = Dish.create query_id: dish["id"], name: dish["title"], url: response["sourceUrl"], vegan: response["vegan"], vegetarian: response["vegetarian"], cheap: response["cheap"], servings: response["servings"], gluten_free: response["glutenFree"], image: "#{response["image"]}" %>
+		<p> <%= link_to  "#{dish["title"]}", dish_path(current_dish) %> | <%=link_to add_dish_dish_path(current_dish), method: :put, class: "btn btn-default btn-sm" do %>
+  	  Add Dish
+  <%end %> </p>
+		<%= dish["image"] %>
 	<% end %>
 <%end%>
 <% elsif @query.presence %>

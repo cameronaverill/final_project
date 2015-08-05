@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   resources :users do
     resources :dishes, only: [:index]
   end
-  resources :dishes, only: [:show, :create]
+  resources :dishes, only: [:show, :create] do
+    member do
+      put "add_dish", to: "dishes#add_dish"
+    end
+  end
   resources :intolerances, except: [:index]
-
-
   # You can have the root of your site routed with "root"
   root 'users#current_user_home'
 

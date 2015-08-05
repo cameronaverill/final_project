@@ -11,31 +11,14 @@ class DishesController < ApplicationController
 
 	def show
 		@dish = Dish.find(params[:id])
-
-		response = Unirest.post "https://webknox-recipes.p.mashape.com/recipes/visualizeRecipe",
-		  headers:{
-		    "X-Mashape-Key" => "8nBXNLJkYlmshUJzjuIrdsM2ciHpp1JTDOmjsnF4J7juwQORb1"
-		  },
-		  parameters:{
-		    "author" => "John Doe",
-		    "backgroundColor" => "#ffffff",
-		    "backgroundImage" => "background1",
-		    "fontColor" => "#333333",
-		    "image" => File.new("<file goes here>"),
-		    "ingredients" => "2 cups of green beans",
-		    "instructions" => "cook the beans",
-		    "mask" => "ellipseMask",
-		    "readyInMinutes" => 45,
-		    "servings" => 2,
-		    "source" => "spoonacular.com",
-		    "title" => "Pork tenderloin with green beans"
-		  }
 	end
 
-	def save_my_previous_url
-	    # session[:previous_url] is a Rails built-in variable to save last url.
-	    session[:my_previous_url] = URI(request.referer || '').path
+	def add_dish
+		@dish = Dish.find(params[:id])
+	    current_user.dishes << @dish
+	    redirect_to dish_path(@dish)
 	end
+
 
 	private
 		def dish_params
