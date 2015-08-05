@@ -13,7 +13,7 @@
 	<% @dishes.each do |dish| %>
 	<% if Dish.find_by(query_id: dish["id"]) %>
 		<% current_dish = Dish.find_by(query_id: dish["id"]) %>
-		<p> <%= link_to  "#{current_dish.name}", user_dish_dish_path(@user, current_dish) %> | <%= image_tag "#{current_dish.image}" %> <%=link_to add_dish_user_path(current_dish), method: :put, class: "btn btn-default btn-sm" do %>
+		<p> <%= link_to  "#{current_dish.name}", user_dish_path(@user, current_dish) %> | <%= image_tag "#{current_dish.image}" %> <%=link_to add_dish_dish_path(current_dish), method: :put, class: "btn btn-default btn-sm" do %>
   	  Save Snack
   <%end %>  </p>
 	<% else %>
