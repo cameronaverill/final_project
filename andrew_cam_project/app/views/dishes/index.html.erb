@@ -1,48 +1,17 @@
-<% if @user.name.presence %>
-<h1> <%=@user.name%>'s Pantry </h1>
-<% else %>
-<h1> Hello, <%=@user.email%>! <%=link_to 'Update your display name', edit_user_registration_path %> </h1>
-<%end%>
-
-<%= form_tag user_path(@user), method: :get do %>
-	<%= text_field_tag :query, @query, placeholder: 'Craving Something?' %>
-	<%= submit_tag "New Plates!" %>
-<% end %>
-
-<% if @dishes.presence && @query.presence %>
-	<% @dishes.each do |dish| %>
-	<% if Dish.find_by(query_id: dish["id"]) %>
-		<% current_dish = Dish.find_by(query_id: dish["id"]) %>
-		<p> <%= link_to  "#{dish["title"]}", dish_path(current_dish) %> | <%= image_tag dish["image"] %></p>
-	<% else %>
-		<% new_response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/#{dish["id"]}/information",
-  			headers:{
-    		"X-Mashape-Key" => "8nBXNLJkYlmshUJzjuIrdsM2ciHpp1JTDOmjsnF4J7juwQORb1",
-    		"Accept" => "application/json"
-  			} %>
-  		<% response = new_response.body %>
-		<% current_dish = Dish.create query_id: dish["id"], name: dish["title"], url: response["sourceUrl"], vegan: response["vegan"], vegetarian: response["vegetarian"], cheap: response["cheap"], servings: response["servings"], gluten_free: response["glutenFree"] %>
-		<p> <%= link_to  "#{dish["title"]}", dish_path(current_dish) %> | <%= image_tag dish["image"] %></p>
-	<% end %>
-<%end%>
-<% elsif @query.presence %>
-	<p>No results found, please search again</p>
-<% else %>
-<% end %>
-
-<%= render @user.dishes %>
-<div class="snackpref">
-<% if @user == current_user %>
-<%= link_to 'Change Snack Preferences', edit_user_path(current_user) %>
-<% end %>
-</div>
-
  <body>
- 
+ <!-- Jumbotron Header -->
+        <header class="jumbotron hero-spacer">
+            <h1>Your Cookbook</h1>            
+            <p><a class="btn btn-primary btn-large">Call to action!</a>
+            </p>
+        </header>
+
+        <hr>
+
         <!-- Title -->
         <div class="row">
             <div class="col-lg-12">
-                <h3>Your Plates</h3>
+                <h3>Your dishes</h3>
             </div>
         </div>
         <!-- /.row -->
@@ -67,7 +36,7 @@
                 <div class="thumbnail">
                     <img src="http://placehold.it/800x500" alt="">
                     <div class="caption">
-                        <h3>Feature Label</h3>
+                        <h3>Curry Farts</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         <p>
                             <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
@@ -111,7 +80,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Snacktivist 2015</p>
+                    <p>Copyright &copy; Snacktivist 2014</p>
                 </div>
             </div>
         </footer>

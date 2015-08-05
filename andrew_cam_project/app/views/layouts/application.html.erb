@@ -3,7 +3,7 @@
 <head>
   <title>AndrewCamProject</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,6 +12,7 @@
 
 <%= render 'layouts/nav' %> 
 <%= yield %>
-
+ <script src="js/bootstrap.min.js"></script>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>

@@ -52,6 +52,11 @@ ActiveRecord::Schema.define(version: 20150804191752) do
     t.integer "intolerance_id", null: false
   end
 
+  create_table "join_user_allergy_tables", force: :cascade do |t|
+    t.string "users"
+    t.string "allergies"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
