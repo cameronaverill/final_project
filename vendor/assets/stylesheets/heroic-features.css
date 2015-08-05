@@ -8,8 +8,17 @@ body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     background-color: rgba(102,156,154,0.9);
 }
+.nav {
+	background-color: rgba(218,221,251,1);
+}
 .navbar {
-	background-color: #232323;
+  background-color: rgba(218,221,251,1);
+}
+.navbar-inverse {
+  background-color: rgba(218,221,251,1);
+}
+.navbar-fixed-top {
+  background-color: rgba(218,221,251,1);
 }
 .thumbnail {
 background-color: #232323;
