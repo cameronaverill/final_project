@@ -21,7 +21,7 @@ class DishesController < ApplicationController
 	    	current_user.dishes << @dish
 	    end
 	    flash[:notice] = "Snack successfully saved"
-	    redirect_to dish_path(@dish)
+	    redirect_to user_dish_path(current_user, @dish)
 	end
 
 
