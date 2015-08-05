@@ -28,6 +28,8 @@ class UsersController < ApplicationController
         @dishes = (response.body)["results"]
       end
     end
+
+    @dishes = @user.dishes.all
   end
 
   def create

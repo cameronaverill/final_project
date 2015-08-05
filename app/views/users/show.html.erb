@@ -13,7 +13,7 @@
 	<% @dishes.each do |dish| %>
 	<% if Dish.find_by(query_id: dish["id"]) %>
 		<% current_dish = Dish.find_by(query_id: dish["id"]) %>
-		<p> <%= link_to  "#{current_dish.name}", user_dish_path(@user, current_dish) %> | <%= image_tag "#{current_dish.image}" %> <%=link_to add_dish_dish_path(current_dish), method: :put, class: "btn btn-default btn-sm" do %>
+		<p> <%= link_to  "#{current_dish.name}", dish_path(current_dish) %> | <%= image_tag "#{current_dish.image}" %> <%=link_to add_dish_dish_path(current_dish), method: :put, class: "btn btn-default btn-sm" do %>
   	  Save Snack
   <%end %>  </p>
 	<% else %>
@@ -24,7 +24,7 @@
   			} %>
   		<% response = new_response.body %>
 		<% current_dish = Dish.create query_id: dish["id"], name: dish["title"], url: response["sourceUrl"], vegan: response["vegan"], vegetarian: response["vegetarian"], cheap: response["cheap"], servings: response["servings"], gluten_free: response["glutenFree"], image: "https://webknox.com/recipeImages/#{response["image"]}" %>
-		<p> <%= link_to  "#{dish["title"]}", user_dish_path(@user, current_dish) %> <%=link_to add_dish_dish_path(current_dish), method: :put, class: "btn btn-default btn-sm" do %>
+		<p> <%= link_to  "#{dish["title"]}", dish_path(current_dish) %> <%=link_to add_dish_dish_path(current_dish), method: :put, class: "btn btn-default btn-sm" do %>
   	  Save Snack
   <%end %> </p>
 		<%= dish["image"] %>
@@ -51,12 +51,17 @@
         </div>
         <!-- /.row -->
 
+        <!-- Cams bullshit-->
+       
+
+
         <!-- Page Features -->
+        <% @dishes.each_slice(3) do |row| %>
         <div class="row text-center">
-
-            <div class="col-md-3 col-sm-6 hero-feature">
+        	<% row.each do |dish| %>
+            <div class="col-md-4 hero-feature">
                 <div class="thumbnail">
-                    <p> <%= image_tag "https://webknox.com/recipeImages/lettuce_wraps-46065.jpg}" %> </p>
+                    <%= image_tag "#{dish.image}" %> 
                     <div class="caption">
                         <h3>Feature Label</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -66,59 +71,16 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Curry Farts</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">See Ingredients!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">See Ingredients!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <%end%>
 
         </div>
+        <%end%>
         <!-- /.row -->
 
         <hr>
 
         <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Snacktivist 2014</p>
-                </div>
-            </div>
-        </footer>
+       
 
     </div>
     <!-- /.container -->
