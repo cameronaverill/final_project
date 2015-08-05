@@ -5,6 +5,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @query = params[:query]
     @diet = Diet.find(@user.diet_id).name
+    @user.intolerance_ids.each do |intolerance|
+      @intolerances.join(%2C+)
+    end
 
     if @query.presence
       #change number in the get request for demonstration; right now keep it at 1 for purpose of keeping requests down
