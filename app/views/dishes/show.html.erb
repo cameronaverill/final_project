@@ -23,7 +23,7 @@
 <p> <strong> Servings: </strong><%= @dish.servings %> <br />
 <p> <%= image_tag "#{@dish.image}" %> </p>
 
-<%= link_to 'Back to Profile', user_path(current_user) %>
+<%= link_to 'Back to Profile', user_path(@user) %>
 
 
 

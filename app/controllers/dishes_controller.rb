@@ -12,6 +12,7 @@ class DishesController < ApplicationController
 
 	def show
 		@dish = Dish.find(params[:id])
+		@user = User.find(params[:user_id])
 	end
 
 	def add_dish

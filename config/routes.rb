@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :diets, except: [:index] 
   resources :users
   resources :users do
-    resources :dishes, only: [:index]
+    resources :dishes, only: [:index, :show]
   end
   resources :dishes, only: [:show, :create] do
     member do
