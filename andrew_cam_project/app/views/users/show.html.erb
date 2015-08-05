@@ -13,7 +13,7 @@
 	<% @dishes.each do |dish| %>
 	<% if Dish.find_by(query_id: dish["id"]) %>
 		<% current_dish = Dish.find_by(query_id: dish["id"]) %>
-		<p> <%= link_to  "#{dish["title"]}", dish_path(current_dish) %> | <%= image_tag dish["image"] %></p>
+		<p> <%= link_to  "#{dish["title"]}", dish_path(current_dish) %> | <%= image_tag "#{dish["image"]}" %></p>
 	<% else %>
 		<% new_response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/#{dish["id"]}/information",
   			headers:{
