@@ -37,7 +37,7 @@ class UsersController < ApplicationController
           }
           @dishes = (response.body)["results"]
         end
-    else 
+      else 
         if @intolerances.presence
           response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/search?query=#{@query}&intolerances=#{@intolerances}&number=1" , 
           headers:{

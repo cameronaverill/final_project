@@ -28,7 +28,7 @@
 		<p> <%= link_to  "#{dish["title"]}", user_dish_path(@user, current_dish) %> <%=link_to add_dish_dish_path(current_dish), method: :put, class: "btn btn-default btn-sm" do %>
   	  Save Snack
   <%end %> </p>
-		<%= dish["image"] %>
+		<p> <%= dish["image"] %> </p>
 	<% end %>
 <%end%>
 <% elsif @query.presence %>
@@ -58,7 +58,7 @@
         <% @user_dishes.each_slice(3) do |row| %>
         <div class="row text-center">
         	<% row.each do |dish| %>
-            <div class="col-md-4 hero-feature">
+            <div class="col-md-4 hero-feature" id = "div-height">
                 <div class="thumbnail">
                     <%= image_tag "#{dish.image}" %> 
                     <div class="caption">
