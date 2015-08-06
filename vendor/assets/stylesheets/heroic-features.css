@@ -31,13 +31,7 @@ background-color: #232323;
     height: 100%;
 }
 form {
-	text-align: center;
-	background: black;
-  background: linear-gradient(bottom, rgba(0,0,0,.1), rgba(0,0,0,.9));
-  background: -webkit-linear-gradient(bottom, rgba(0,0,0,.4), rgba(0,0,0,.4));
-  background: -moz-linear-gradient(bottom, rgba(0,0,0, 1), rgba(0,0,0,.4));
-  padding: 10px;
-  line-height: 28px;
+	text-align: right;
 }
 h1 {
 	text-align: center;
