@@ -1,5 +1,5 @@
 <% if @user.name.presence %>
-<h1> <%=@user.name%>'s Profile </h1>
+<h1> <div> <%=@user.name%>'s Saved Snacks </div> </h1>
 <% else %>
 <h1> Hello, <%=@user.email%>! <%=link_to 'Update your display name', edit_user_registration_path %> </h1>
 <%end%>
@@ -36,13 +36,7 @@
 
  <body>
  
-        <!-- Title -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>Snacks</h3>
-            </div>
-        </div>
-        <!-- /.row -->
+      
 
         
        

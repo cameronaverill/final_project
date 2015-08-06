@@ -2,8 +2,8 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: rgba(84, 241, 190,1); margin: 0 auto">
-        <div class="container" style="background-color: rgba(84, 241, 190,1); margin: 0 auto">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: rgba(48,48,48,.9); margin: 0 auto">
+        <div class="container" style="background-color: rgba(48,48,48,.9); margin: 0 auto">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -21,7 +21,7 @@
 
                 	<% if user_signed_in? %> 
                     <li>
-                        <%= link_to 'Snacktivist', user_path(current_user), :class => 'navbar-brand' %>
+                        <%= link_to 'Snacktivist', user_path(current_user), :class => 'navbar-brand'%>
                     </li>
                 	<li>
                         <%= link_to 'Snackers', users_path %>
@@ -34,11 +34,11 @@
                     </li>
 
                     <li>
-                        <%= link_to 'Snack Requests', user_friend_requests_path(current_user.id), :class => 'navbar-link' %>
+                        <%= link_to 'Snack Requests', user_friend_requests_path(current_user.id), :class => 'navbar-link'%>
                     </li>
                     
                     <li>
-                        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'%>
                     </li>
                     <% else %>   
                     <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %> 

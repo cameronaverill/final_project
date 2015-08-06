@@ -1,6 +1,7 @@
 <h1> Snackers </h1>
 
-<% @users.each do |u| %>
+<div class "snackers"><% @users.each do |u| %>
 	<p> <%= link_to "#{u.name}", user_path(u) %> </p>
 <%end%>
+</div>
 	

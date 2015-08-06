@@ -6,19 +6,19 @@
 
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    background-color: rgb(48,48,48);
+    background-color: rgb(48,48,48,1);
 }
 .nav {
-	background-color: rgba(84, 241, 190,1);
+	background-color: rgba(48,48,48,.9);
 }
 .navbar {
-  background-color: rgba(84, 241, 190,1);
+  background-color: rgba(48,48,48,.9);
 }
 .navbar-inverse {
-  background-color: rgba(84, 241, 190,1);
+  background-color: rgba(48,48,48,.9);
 }
 .navbar-fixed-top {
-  background-color: rgba(84, 241, 190,1);
+  background-color: rgba(48,48,48,.9);
 }
 .thumbnail {
 background-color: black;
