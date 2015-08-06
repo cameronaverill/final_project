@@ -1,8 +1,11 @@
 <% if @user.name.presence %>
+
 <h1> <%=@user.name%>'s Profile </h1> 
 <% if @user != current_user%>
 <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post, class: "btn btn-default btn-sm" %>
 <%end%>
+
+<h1> <div> <%=@user.name%>'s Saved Snacks </div> </h1>
 
 <% else %>
 <h1> Hello, <%=@user.email%>! <%=link_to 'Update your display name', edit_user_registration_path %> </h1>
@@ -34,21 +37,13 @@
 <% else %>
 <% end %>
 
-<% if @user == current_user %>
-<%= link_to 'Edit Food Preferences', edit_user_path(current_user) %>
-<% end %>
+
 
  <body>
  
-        <!-- Title -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>Snacks</h3>
-            </div>
-        </div>
-        <!-- /.row -->
+      
 
-        <!-- Cams bullshit-->
+        
        
 
 
@@ -58,27 +53,20 @@
         	<% row.each do |dish| %>
             <div class="col-md-4 hero-feature" id = "div-height">
                 <div class="thumbnail">
-                    <%= image_tag "#{dish.image}" %> 
+                    <%= link_to (image_tag dish.image, class:'img-responsive'), user_dish_path(@user, dish) %> 
                     <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                         <%= link_to dish.name, user_dish_path(@user, dish) %>                    
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
                         </p>
                     </div>
                 </div>
             </div>
             <%end%>
-
         </div>
         <%end%>
         <!-- /.row -->
-
         <hr>
-
         <!-- Footer -->
-       
-
     </div>
     <!-- /.container -->
 </body>

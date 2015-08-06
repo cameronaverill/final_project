@@ -6,22 +6,22 @@
 
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    background-color: rgba(102,156,154,0.9);
+    background-color: rgb(48,48,48,1);
 }
 .nav {
-	background-color: rgba(218,221,251,1);
+	background-color: rgba(48,48,48,.9);
 }
 .navbar {
-  background-color: rgba(218,221,251,1);
+  background-color: rgba(48,48,48,.9);
 }
 .navbar-inverse {
-  background-color: rgba(218,221,251,1);
+  background-color: rgba(48,48,48,.9);
 }
 .navbar-fixed-top {
-  background-color: rgba(218,221,251,1);
+  background-color: rgba(48,48,48,.9);
 }
 .thumbnail {
-background-color: #232323;
+background-color: black;
 }
 .hero-spacer {
     margin-top: 5px;
@@ -30,14 +30,12 @@ background-color: #232323;
     margin-bottom: 30px;
     height: 100%;
 }
+p {
+  text-align: center;
+}
 form {
-	text-align: center;
-	background: black;
-  background: linear-gradient(bottom, rgba(0,0,0,.1), rgba(0,0,0,.9));
-  background: -webkit-linear-gradient(bottom, rgba(0,0,0,.4), rgba(0,0,0,.4));
-  background: -moz-linear-gradient(bottom, rgba(0,0,0, 1), rgba(0,0,0,.4));
-  padding: 10px;
-  line-height: 28px;
+	text-align: justify;
+  padding-left: 10px;
 }
 h1 {
 	text-align: center;

@@ -66,11 +66,9 @@ ActiveRecord::Schema.define(version: 20150806170241) do
     t.integer "intolerance_id", null: false
   end
 
-  create_table "relationships", force: :cascade do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "join_user_allergy_tables", force: :cascade do |t|
+    t.string "users"
+    t.string "allergies"
   end
 
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
@@ -86,7 +84,7 @@ ActiveRecord::Schema.define(version: 20150806170241) do
 
   add_index "test_resources", ["friend_id"], name: "index_test_resources_on_friend_id", using: :btree
   add_index "test_resources", ["user_id"], name: "index_test_resources_on_user_id", using: :btree
-
+  
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
