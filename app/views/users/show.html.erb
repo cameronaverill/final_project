@@ -1,6 +1,5 @@
 <% if @user.name.presence %>
 
-<h1> <%=@user.name%>'s Profile </h1> 
 <% if @user != current_user%>
   <% if !(current_user.friends.include?(@user)) %>
   <%= link_to "Request Snacker", friendships_path(:friend_id => @user), :method => :post, class: "btn btn-default btn-sm" %>

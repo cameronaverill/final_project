@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       put "add_dish", to: "dishes#add_dish"
     end
   end
-  resources :parties, only: [:show, :create]
+  resources :parties, only: [:show, :create, :new, :update, :edit]
   resources :intolerances, except: [:index]
   # You can have the root of your site routed with "root"
   root 'users#current_user_home'

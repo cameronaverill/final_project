@@ -1,4 +1,8 @@
 class PartiesController < ApplicationController
+	def new
+		@party = Party.new
+	end
+
 	def create
 		@party = Party.new(party_params)
 		if @party.save
@@ -14,7 +18,6 @@ class PartiesController < ApplicationController
 
 	def show
 		@party = Party.find(params[:id])
-		@user = User.find(params[:user_id])
 	end
 
 	def destroy
@@ -35,6 +38,6 @@ class PartiesController < ApplicationController
 
 	private
 		def party_params
-			params.require(:party).permit(:name, :day, :month, :location, :user_ids => [], :dish_ids => [])
+			params.require(:party).permit(:name, :date, :location, :user_ids => [], :dish_ids => [])
 		end
 end
