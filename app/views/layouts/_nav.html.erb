@@ -41,12 +41,14 @@
                     <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %> 
                     <% end %>
                     
+                    <% if user_signed_in? %>
                     <li>
                      <%= form_tag user_show_search_path(current_user), method: :get do %>
-                        <%= text_field_tag :query, @query %>
+                        <%= text_field_tag :query, @query, placeholder: 'Find a snack' %>
                         <%= submit_tag "Search" %>
                     <% end %>
                     </li>
+                    <% end %>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

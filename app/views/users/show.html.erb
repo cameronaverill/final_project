@@ -1,9 +1,7 @@
 <% if @user.name.presence %>
 <h1> <%=@user.name%>'s Profile </h1> 
 <% if @user != current_user%>
-<%=link_to  friend_request_friendable_path(@user), method: :put, class: "btn btn-default btn-sm" do %>
-      Friend Snacker
-<%end %>
+<%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post, class: "btn btn-default btn-sm" %>
 <%end%>
 
 <% else %>

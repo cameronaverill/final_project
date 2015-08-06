@@ -6,15 +6,15 @@ class FriendshipsController < ApplicationController
         @search_query = params[:search_query]
           if @search_query 
             @potential_friends = User.all.fuzzy_search(@search_query)
+            @potential_friends = @potential_friends.order(name: :desc)
           else
-            @potential_friends = User.all
+            @potential_friends = ''
           end
-        @potential_friends = @potential_friends.order(name: :desc)
     
         end
 
       def create
-        @friendship = current_user.friendships.build(:friend_id => params[:friend_id], approved: "false")
+        @friendship = current_user.friendships.build(:friend_id => params[:friend_id], approved: false)
         if @friendship.save
           flash[:notice] = "Friend requested."
           redirect_to :back
