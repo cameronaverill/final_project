@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get 'friends/destroy'
 
-  resources :friend_requests
   devise_for :users, controllers: { registrations: "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -12,6 +11,8 @@ Rails.application.routes.draw do
   resources :users
   resources :users do
     resources :dishes, only: [:index, :show]
+    resources :friend_requests
+    get "show_search", to: "users#show_search"
   end
   resources :dishes, only: [:show, :create] do
     member do
