@@ -20,3 +20,18 @@ li{
 	display: inline;
 	margin: 6px;
 }
+
+#row-height-check{
+	max-height: 300px;
+}
+
+
+img{
+	max-height: 250px;
+	position: relative;
+}
+
+.col-md-4{
+	max-height: 250px;
+	position: relative;
+}
