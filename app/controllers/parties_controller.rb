@@ -6,14 +6,24 @@ class PartiesController < ApplicationController
 	def create
 		@party = Party.new(party_params)
 		if @party.save
+			current_user.parties << @party
 			redirect_to party_path(@party)
 		else 
 			render 'new'
 		end
 	end
 
+	def update
+      @party = Party.find(params[:id])
+      if @party.update(party_params)
+        redirect_to party_path(@party)
+      else
+          render 'edit'
+      end
+    end
+
 	def index
-		@party = current_user.parties.all
+		@parties = current_user.parties.all
 	end
 
 	def show
@@ -33,6 +43,25 @@ class PartiesController < ApplicationController
 	    end
 	    flash[:notice] = "RSVP'd to party successfully"
 	    redirect_to user_party_path(current_user, @party)
+	end
+
+	def invite_friend_to_party
+		@party = Party.find(params[:id])
+		if current_user.parties.empty? || !(current_user.parties.include?(@party)) 
+	    	current_user.parties << @party
+	    end
+	    flash[:notice] = "RSVP'd to party successfully"
+	    redirect_to user_party_path(current_user, @party)
+	end
+
+	def attend
+		@party = Party.find(params[:party_id])
+		if !@party.users.include?(current_user)
+  			current_user.parties << @party
+  		end
+  		@party.save
+  		flash[:notice] = "RSVP'd to party successfully"
+  		redirect_to party_path(@party)
 	end
 
 

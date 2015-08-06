@@ -11,7 +11,7 @@
 
 <% if @potential_friends.presence %>
   <% @potential_friends.each do |ptl| %>
-    <p> <%= link_to  "#{ptl.name}", user_path(ptl)%> <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post, class: "btn btn-default btn-sm" %> </p>
+    <p> <%= link_to  "#{ptl.name}", user_path(ptl)%> <%= link_to "Add Friend", friendships_path(:friend_id => ptl), :method => :post, class: "btn btn-default btn-sm" %> </p>
 <% end %>
 <% end %>
 </div>

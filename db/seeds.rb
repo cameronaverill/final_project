@@ -37,3 +37,5 @@ Intolerance.create! name: "wheat"
 Dish.all.each { |dish| cameron.dishes << dish }
 cameron.intolerances << Intolerance.find_by(name: 'dairy')
 cameron.intolerances << Intolerance.find_by(name: 'peanut')
+
+Party.destroy_all

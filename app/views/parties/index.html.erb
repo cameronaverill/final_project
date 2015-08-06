@@ -1,15 +1,17 @@
 <h1> Your Parties </h1>
+<p> <%= button_to 'New Party', new_party_path, method: :get, class: "btn btn-default btn-sm"  %>
 
 <% if @parties.presence %>
 <% @parties.each do |party| %>
-	<p> <strong> <%= party.name %> </strong> <br />
-		<strong> Date: </strong> <%= party.day %> <%= party.month %> <br />
+	<p> <strong> <%= link_to "#{party.name}" , party_path(party) %> </strong> <br />
+		<strong> Date: </strong> <%= party.date.to_formatted_s(:long) %> <br />
 		<strong> Location: </strong> <%= party.location %> <br />
-		<strong> Snackers Attending </strong> <hr>
+		<strong> Snackers Attending <strong>  <br />
 		<% party.users.each do |snacker| %>
 			<%= link_to "#{snacker.name}", user_path(snacker) %> <br />
 		<% end %>
 		</p>
+		<hr>
 <% end %>
 <% end %>
 

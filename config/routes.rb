@@ -19,7 +19,9 @@ Rails.application.routes.draw do
       put "add_dish", to: "dishes#add_dish"
     end
   end
-  resources :parties, only: [:show, :create, :new, :update, :edit]
+  resources :parties, only: [:show, :create, :new, :update, :edit] do
+    post 'attend', to: "parties#attend"
+  end
   resources :intolerances, except: [:index]
   # You can have the root of your site routed with "root"
   root 'users#current_user_home'

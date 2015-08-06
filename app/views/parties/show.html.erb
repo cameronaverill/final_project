@@ -1,2 +1,8 @@
-<h1> <%= @party.name %> </h1>
-<p> <strong> When? </strong> <%= @party.day %> <%= @party.month %> <%=  @party.year %>
+<h1> <%= @party.name %> </h1> 
+<p> <%= button_to 'Attend', party_attend_path(@party), method: :post, class: "btn btn-default btn-sm"  %> </p>
+<p> <strong> When? </strong> <%= @party.date.to_formatted_s(:long)  %>
+<p> <strong> Where? </strong> <%= @party.location  %>
+<p> <strong> Who? </strong> <br /> 
+<% @party.users.each do |user| %>
+	<p> <%= link_to "#{user.name}", user_path(user) %> </p>
+<% end %>
