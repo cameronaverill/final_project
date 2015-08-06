@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
    belongs_to :diet
    has_and_belongs_to_many :dishes
    has_and_belongs_to_many :intolerances
+   has_and_belongs_to_many :parties
 
    has_many :friendships
        has_many :passive_friendships, :class_name => "Friendship", :foreign_key => "friend_id"

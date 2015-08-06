@@ -1,0 +1,13 @@
+<h1> Your Parties </h1>
+
+<% @parties.each do |party| %>
+	<p> <strong> <%= party.name %> </strong> <br />
+		<strong> Date: </strong> <%= party.day %> <%= party.month %> <br />
+		<strong> Location: </strong> <%= party.location %> <br />
+		<strong> Snackers Attending </strong> <hr>
+		<% party.users.each do |snacker| %>
+			<%= link_to "#{snacker.name}", user_path(snacker) %> <br />
+		<% end %>
+		</p>
+<% end %>
+

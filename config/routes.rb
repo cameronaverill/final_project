@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users
   resources :users do
     resources :dishes, only: [:index, :show]
+    resources :parties, only: [:index, :show]
     get "show_search", to: "users#show_search"
   end
   resources :dishes, only: [:show, :create] do
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
       put "add_dish", to: "dishes#add_dish"
     end
   end
+  resources :parties, only: [:show, :create]
   resources :intolerances, except: [:index]
   # You can have the root of your site routed with "root"
   root 'users#current_user_home'
