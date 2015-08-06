@@ -1,7 +1,7 @@
 <% if @user.name.presence %>
 <h1> <%=@user.name%>'s Profile </h1> 
 <% if @user != current_user%>
-<%=link_to new_friend_request_path, method: :put, class: "btn btn-default btn-sm" do %>
+<%=link_to new_friend_request_path, method: :get, class: "btn btn-default btn-sm" do %>
       Friend Snacker
 <%end %>
 <%end%>

@@ -8,12 +8,8 @@ class User < ActiveRecord::Base
    has_and_belongs_to_many :dishes
    has_and_belongs_to_many :intolerances
 
-   has_many :friend_requests, dependent: :destroy
-   has_many :pending_friends, through: :friend_requests, 
-   source: :friend
-
-   has_many :friendships, dependent: :destroy
-   has_many :friends, through: :friendships
+   has_many :friendables
+   has_many :users, through: :friendables
 
    def remove_friend(friend)
     current_user.friends.destroy(friend)

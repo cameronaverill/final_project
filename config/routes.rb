@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
-  get 'friends/index'
+  
+  resources :friendable do 
+    member do 
+      put 'friend_request' 
+    end 
+  end
 
-  get 'friends/destroy'
+  resources :friendables do
+    member do
+      put 'friend_request'
+      put 'friend_request_accept'
+      delete 'friend_request_reject'
+    end
+  end
 
   devise_for :users, controllers: { registrations: "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
@@ -21,6 +32,8 @@ Rails.application.routes.draw do
   resources :intolerances, except: [:index]
   # You can have the root of your site routed with "root"
   root 'users#current_user_home'
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

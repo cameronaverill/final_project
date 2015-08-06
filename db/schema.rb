@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150806114300) do
+ActiveRecord::Schema.define(version: 20150806122046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,30 +42,18 @@ ActiveRecord::Schema.define(version: 20150806114300) do
     t.integer "dish_id", null: false
   end
 
-  create_table "friend_requests", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "friend_id"
+  create_table "friendables", force: :cascade do |t|
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.boolean  "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "friend_requests", ["friend_id"], name: "index_friend_requests_on_friend_id", using: :btree
-  add_index "friend_requests", ["user_id"], name: "index_friend_requests_on_user_id", using: :btree
 
   create_table "friends", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "friendships", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "friend_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "friendships", ["friend_id"], name: "index_friendships_on_friend_id", using: :btree
-  add_index "friendships", ["user_id"], name: "index_friendships_on_user_id", using: :btree
 
   create_table "intolerances", force: :cascade do |t|
     t.string   "name"
@@ -120,10 +108,6 @@ ActiveRecord::Schema.define(version: 20150806114300) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "friend_requests", "friends"
-  add_foreign_key "friend_requests", "users"
-  add_foreign_key "friendships", "friends"
-  add_foreign_key "friendships", "users"
   add_foreign_key "test_resources", "friends"
   add_foreign_key "test_resources", "users"
   add_foreign_key "users", "diets"
