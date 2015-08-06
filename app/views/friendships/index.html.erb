@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h4> Search for a fellow snacker </h4>
+<%= form_tag friendships_path, method: :get do %>
+  <%= text_field_tag :search_query, params[:search_query], placeholder: 'Find a snacker' %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% if @potential_friends.presence %>
+  <% @potential_friends.each do |ptl| %>
+    <p> <%= ptl.name %> <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post, class: "btn btn-default btn-sm" %> </p>
+<% end %>
+<% end %>
+
+<h4>Fellow Snackers</h4>
+      <% if !current_user.friends.presence %>
+        You don't have any fellow snackers 
+      <% else %>
+        <% current_user.friends.each do |friend| %>
+        <p>   <%= friend.name %> 
+          <%= link_to "Remove", friendship_path(:id => friend), :method => :delete, class: "btn btn-default btn-sm" %> </p>
+       
+      <% end %>
+      <% end %>
+
+
+
+

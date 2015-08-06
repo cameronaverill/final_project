@@ -1,18 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :friendable do 
-    member do 
-      put 'friend_request' 
-    end 
-  end
-
-  resources :friendables do
-    member do
-      put 'friend_request'
-      put 'friend_request_accept'
-      delete 'friend_request_reject'
-    end
-  end
+  resources :friendships
 
   devise_for :users, controllers: { registrations: "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
