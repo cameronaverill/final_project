@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<div class="container">
+<div class="row">
+<div class="col-md-6 col-md-offset-3" style="text-align: center; margin: 0 auto">
 <h4> Search for a fellow snacker </h4>
 <%= form_tag friendships_path, method: :get do %>
   <%= text_field_tag :search_query, params[:search_query], placeholder: 'Find a snacker' %>
@@ -11,13 +14,33 @@
     <p> <%= link_to  "#{ptl.name}", user_path(ptl)%> <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post, class: "btn btn-default btn-sm" %> </p>
 <% end %>
 <% end %>
+</div>
+
+<div class="col-md-6">
+<h4>Snacker Requests</h4>
+  <% if !current_user.requested_friendships.presence %>
+      <strong> No snacker requests </strong>
+  <% else %>
+        <ul>
+            <% current_user.requested_friendships.each do |request| %>
+            <li>
+              <%= link_to "#{request.name}", user_path(request) %> 
+              <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> 
+              <%= link_to "Decline", friendship_path(:id => request), :method => :delete %>
+            </li>
+          <% end %>
+        </ul>
+  <% end %>
+  </div>
+  </div>
+  </div>
 
 <h4>Fellow Snackers</h4>
       <% if !current_user.friends.presence %>
         You don't have any fellow snackers 
       <% else %>
         <% current_user.friends.each do |friend| %>
-        <p>   <%= friend.name %> 
+        <p>   <%= link_to "#{friend.name}", user_path(friend) %> 
           <%= link_to "Remove", friendship_path(:id => friend), :method => :delete, class: "btn btn-default btn-sm" %> </p>
        
       <% end %>

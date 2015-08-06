@@ -15,6 +15,12 @@ class DishesController < ApplicationController
 		@user = User.find(params[:user_id])
 	end
 
+	def destroy
+		@dish = Dish.find(params[:id])
+		@dish.destroy
+		redirect_to dishes_path(current_user)
+	end
+
 	def add_dish
 		@dish = Dish.find(params[:id])
 		if current_user.dishes.empty? || !(current_user.dishes.include?(@dish)) 

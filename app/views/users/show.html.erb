@@ -2,7 +2,9 @@
 
 <h1> <%=@user.name%>'s Profile </h1> 
 <% if @user != current_user%>
-<%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post, class: "btn btn-default btn-sm" %>
+  <% if !(current_user.friends.include?(@user)) %>
+  <%= link_to "Request Snacker", friendships_path(:friend_id => @user), :method => :post, class: "btn btn-default btn-sm" %>
+  <% end %>
 <%end%>
 
 <h1> <div> <%=@user.name%>'s Saved Snacks </div> </h1>
