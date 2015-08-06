@@ -3,6 +3,13 @@ class FriendsController < ApplicationController
 
     def index
       @friends = current_user.friends
+      @friend_query = params[:friend_query]
+      if @friend_query.presence
+          @search_users = User.basic_search(@friend_query)
+      else
+          @search_users = User.all
+      end
+      @search_users = @search_users.order(name: :desc)
     end
 
     def destroy  

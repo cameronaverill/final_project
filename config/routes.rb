@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :diets, except: [:index] 
   resources :users
+  resources :friend_requests
   resources :users do
     resources :dishes, only: [:index, :show]
-    resources :friend_requests
     get "show_search", to: "users#show_search"
   end
   resources :dishes, only: [:show, :create] do

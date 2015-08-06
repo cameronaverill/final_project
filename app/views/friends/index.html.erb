@@ -1,2 +1,20 @@
-<h1>Friends#index</h1>
-<p>Find me in app/views/friends/index.html.erb</p>
+<h1> Snackers </h1>
+
+<%= form_tag friends_index_path, method: :get  do %>
+	<%= text_field_tag :friend_query, params[:friend_query], placeholder: 'Find Snackers' %>
+	<%= submit_tag "Index" %>
+<% end %>
+
+<% if @search_users %>
+	<% @search_users.each do |user| %>
+		<%= user.name %> 
+		<%=link_to new_friend_request_path, method: :put, class: "btn btn-default btn-sm" do %>
+      	Friend Snacker
+		<%end %>
+	<% end %>
+<% end %>
+
+<% @friends.each do |u| %>
+	<p> <%= link_to "#{u.name}", user_path(u) %> </p>
+<%end%>
+	
