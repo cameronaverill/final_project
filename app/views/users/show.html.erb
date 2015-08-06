@@ -1,14 +1,10 @@
-<script src="/assets/jquery.js"></script>
 <% if @user.name.presence %>
 <h1> <%=@user.name%>'s Profile </h1>
 <% else %>
 <h1> Hello, <%=@user.email%>! <%=link_to 'Update your display name', edit_user_registration_path %> </h1>
 <%end%>
 
-<%= form_tag user_path(@user), method: :get do %>
-	<%= text_field_tag :query, @query %>
-	<%= submit_tag "Search" %>
-<% end %>
+
 
 <% if @dishes.presence && @query.presence %>
 	<% @dishes.each do |dish| %>
@@ -36,9 +32,7 @@
 <% else %>
 <% end %>
 
-<% if @user == current_user %>
-<%= link_to 'Edit Food Preferences', edit_user_path(current_user) %>
-<% end %>
+
 
  <body>
  
@@ -50,7 +44,7 @@
         </div>
         <!-- /.row -->
 
-        <!-- Cams bullshit-->
+        
        
 
 
@@ -60,11 +54,10 @@
         	<% row.each do |dish| %>
             <div class="col-md-4 hero-feature" id = "div-height">
                 <div class="thumbnail">
-                    <%= image_tag "#{dish.image}" %> 
+                    <%= image_tag dish.image %> 
                     <div class="caption">
-                        <%= <h3>"#{dish.name}"</h3> %>                        
+                         <%= link_to dish.name, user_dish_path(@user, dish) %>                    
                         <p>
-                          <a href="#" class="btn btn-primary">See Ingredients</a> <a href="#" class="btn btn-default">More Info</a>
                         </p>
                     </div>
                 </div>

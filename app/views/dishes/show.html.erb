@@ -1,10 +1,12 @@
-<h1> <%= @dish.name %> </h1> <%=link_to add_dish_dish_path(@dish), method: :put, class: "btn btn-default btn-sm" do %>
-  	  Save Snack
-  <%end %>
+<h1> <%= @dish.name %> </h1> 
+<hr>
 <h1> <small> <%= link_to "#{@dish.url}", @dish.url %> </small> </h1>
 <hr>
 
 <p> 
+  <%=link_to add_dish_dish_path(@dish), method: :put, class: "btn btn-default btn-sm" do %>
+  	  Save Snack
+  <%end %>
 <ul>
 	<% if @dish.vegetarian %>
 		<li> Vegetarian </li>
