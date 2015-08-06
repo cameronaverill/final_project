@@ -24,6 +24,9 @@ gem 'mime-types'
 
 gem 'rest-client'
 
+gem "font-awesome-rails"
+
+
 gem 'addressable'
 
 gem 'unirest'

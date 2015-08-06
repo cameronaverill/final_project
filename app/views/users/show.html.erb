@@ -54,7 +54,7 @@
         	<% row.each do |dish| %>
             <div class="col-md-4 hero-feature" id = "div-height">
                 <div class="thumbnail">
-                    <%= image_tag dish.image %> 
+                    <%= link_to (image_tag dish.image, class:'img-responsive'), user_dish_path(@user, dish) %> 
                     <div class="caption">
                          <%= link_to dish.name, user_dish_path(@user, dish) %>                    
                         <p>

@@ -1,5 +1,4 @@
 
-
 <body>
 
     <!-- Navigation -->
@@ -48,7 +47,7 @@
                     <li>
                      <%= form_tag user_show_search_path(current_user), method: :get do %>
                         <%= text_field_tag :query, @query, placeholder: "Find a Plate!" %>
-                        <%= submit_tag "fa fa-cutlery" %>
+                        <%= submit_tag 'Search' %> <!-- <i class="fa fa-cutlery"></i> fa_icon "fa-cutlery" -->
                     <% end %>
                     </li>
                 </ul>
