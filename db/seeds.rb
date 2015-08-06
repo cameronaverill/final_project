@@ -19,7 +19,7 @@ User.destroy_all
 cameron = User.create! email: "cra2126@columbia.edu", password: "password", password_confirmation: "password", name: 'Cam'
 
 Dish.destroy_all
-test = Dish.create! name: "Test Dish", url: "https://www.google.com", vegan: true, vegetarian: true, cheap: false, servings: 4, image: "http://www.iheartfood4thought.com/wp-content/uploads/2015/03/Food-for-thought-1.jpeg"
+
 
 Intolerance.destroy_all
 Intolerance.create! name: "dairy"

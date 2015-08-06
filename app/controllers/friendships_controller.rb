@@ -14,14 +14,15 @@ class FriendshipsController < ApplicationController
         end
 
       def create
-        @friendship = current_user.friendships.build(:friend_id => params[:friend_id], approved: false)
-        if @friendship.save
-          flash[:notice] = "Friend requested."
-          redirect_to :back
-        else
-          flash[:error] = "Unable to request friendship."
-          redirect_to :back
-        end
+          @friendship = current_user.friendships.build(:friend_id => params[:friend_id], approved: false)
+          if @friendship.save
+            flash[:notice] = "Snacker requested."
+            redirect_to :back
+          else
+            flash[:error] = "Unable to request snacker."
+            redirect_to :back
+          end
+      
       end
 
       # PATCH/PUT /friendships/1
@@ -30,9 +31,9 @@ class FriendshipsController < ApplicationController
       @friendship = Friendship.where(friend_id: current_user, user_id: params[:id]).first
       @friendship.update(approved: true)
         if @friendship.save
-          redirect_to root_url, :notice => "Successfully confirmed friend!"
+          redirect_to root_url, :notice => "Successfully confirmed snacker!"
         else
-          redirect_to root_url, :notice => "Sorry! Could not confirm friend!"
+          redirect_to root_url, :notice => "Sorry! Could not confirm snacker!"
         end
       end
 
@@ -44,4 +45,5 @@ class FriendshipsController < ApplicationController
         flash[:notice] = "Removed friendship."
         redirect_to :back
       end
+
 end
