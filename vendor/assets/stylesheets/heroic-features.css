@@ -28,6 +28,7 @@ background-color: #232323;
 }
 .hero-feature {
     margin-bottom: 30px;
+    height: 100%;
 }
 form {
 	text-align: center;
