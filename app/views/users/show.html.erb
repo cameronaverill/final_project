@@ -6,7 +6,7 @@
   <% end %>
 <%end%>
 
-<h1> <div> <%=@user.name%>'s Saved Snacks </div> </h1>
+<h1 id="show-header"> <div> <%=@user.name%>'s Saved Snacks </div> </h1>
 
 <% else %>
 <h1> Hello, <%=@user.email%>! <%=link_to 'Update your display name', edit_user_registration_path %> </h1>

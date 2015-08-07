@@ -51,6 +51,7 @@ li{
 body {
 /*	background-image: url(http://www.housepict.us/wp-content/uploads/2015/04/wood-desk-background-hd-j3iq0wxn.jpg);
 */	background-size: cover;
+	background-color: rgba(196, 216, 226, 1);
 }
 
 img{
@@ -80,9 +81,7 @@ img{
 	margin: 0 auto;
 	bottom: 10px;
 }
-h1 {
-	background-color: rgba(800,900,604,.8);
-}
+
 div.radio{
 	}
 .img-responsive{
@@ -92,4 +91,7 @@ div.radio{
 .col-md-4{
 	max-height: 250px;
 	position: relative;
+}
+#show-header{
+	margin: 20px;
 }
