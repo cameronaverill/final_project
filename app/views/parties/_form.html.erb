@@ -2,9 +2,9 @@
   <%= f.input :name %>
   <%= f.input :location %>
   <%= f.date_select(:date) %> <br /> <br />
-  <p style="text-align: left"> <strong> Add Friends to Party </strong> </p>
   <% if current_user.friends.presence %>
-  <%= f.collection_check_boxes :user_ids, current_user.friends, :id, :name%>
+	<p style="text-align: left"> <strong> Add Friends to Party </strong> </p>
+  	<%= f.collection_check_boxes :user_ids, current_user.friends, :id, :name%> <br />
   <% end %>
   <%= f.button :submit %>
 <% end %>
