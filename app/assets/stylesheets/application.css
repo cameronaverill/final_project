@@ -119,6 +119,17 @@ div.radio{
 	min-height: 300px;
 }
 
+.show-row-3{
+	background-color: rgba(48,48,48,1);
+	margin: -70px 0px 0px 0px;
+	padding: 25px;
+	right: 0px;
+	width: 100%;
+	color: white;
+	text-align: center;
+	min-height: 300px;
+}
+
 .this-container{
 	margin: 0;
 	padding: 0;

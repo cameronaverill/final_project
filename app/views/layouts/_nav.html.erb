@@ -47,8 +47,8 @@
                     <li>
                      <%= form_tag user_show_search_path(current_user), method: :get do %>
                      
-                        <%= text_field_tag :query, @query, placeholder: 'Find a snack', style:"color: black" %>
-                        <%= submit_tag "Search" %>
+                        <%= text_field_tag :query, @query, placeholder: 'Find a snack', style:"color: black;; margin: 13px 5px 0px 0" %>
+                        <%= submit_tag "Search", style:"background-color: rgba(196, 216, 226, 1); border-radius: 10px; color: black" %>
 
                     <% end %>
                     </li>
