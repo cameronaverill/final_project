@@ -1,8 +1,15 @@
 <h1> <%= @party.name %> </h1> 
-<p> <%= button_to 'Attend', party_attend_path(@party), method: :post, class: "btn btn-default btn-sm"  %> </p>
+<p> <%= button_to 'Attend', party_attend_path(@party), method: :post, class: "btn btn-default btn-sm"  %> <%= button_to 'Edit Party', edit_party_path(@party), method: :get, class: "btn btn-default btn-sm"  %> </p>
 <p> <strong> When? </strong> <%= @party.date.to_formatted_s(:long)  %>
 <p> <strong> Where? </strong> <%= @party.location  %>
 <p> <strong> Who? </strong> <br /> 
 <% @party.users.each do |user| %>
 	<p> <%= link_to "#{user.name}", user_path(user) %> </p>
 <% end %>
+<p> <strong> What are we eating? </strong> </p>
+<% @party.dishes.each do |dish| %>
+	<p> <%= link_to "#{dish.name}", user_dish_path(current_user, dish) %> </p>
+<% end %>
+
+<p> <%= button_to 'Add Dish to Party', party_create_party_dish_path(@party), method: :put, class: "btn btn-default btn-sm"  %> </p>
+

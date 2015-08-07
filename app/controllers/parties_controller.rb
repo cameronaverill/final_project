@@ -13,6 +13,10 @@ class PartiesController < ApplicationController
 		end
 	end
 
+	def edit
+		@party = Party.find(params[:id])
+	end
+	
 	def update
       @party = Party.find(params[:id])
       if @party.update(party_params)

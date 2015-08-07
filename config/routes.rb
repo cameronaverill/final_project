@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  put 'parties/:party_id/dishes/:id/add' => 'dishes#add_dish_to_party', as: :purchase
   resources :diets, except: [:index] 
   resources :users
   resources :users do
@@ -21,8 +22,14 @@ Rails.application.routes.draw do
   end
   resources :parties, only: [:show, :create, :new, :update, :edit] do
     post 'attend', to: "parties#attend"
+    resources :dishes, only: [:new]
+    put "create_party_dish", to: "dishes#create_party_dish" 
   end
   resources :intolerances, except: [:index]
+
+  # Add dish to party
+  get 'parties/:party_id/add_dish/:id' => 'dishes#add_dish_to_party', as: 'add_dish'
+
   # You can have the root of your site routed with "root"
   root 'users#current_user_home'
 
