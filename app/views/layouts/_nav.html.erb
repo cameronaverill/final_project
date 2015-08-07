@@ -47,7 +47,7 @@
                     <li>
                      <%= form_tag user_show_search_path(current_user), method: :get do %>
                      
-                        <%= text_field_tag :query, @query, placeholder: 'Find a snack' %>
+                        <%= text_field_tag :query, @query, placeholder: 'Find a snack', style:"color: black" %>
                         <%= submit_tag "Search" %>
 
                     <% end %>
