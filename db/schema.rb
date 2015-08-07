@@ -72,6 +72,11 @@ ActiveRecord::Schema.define(version: 20150806220726) do
     t.integer "intolerance_id", null: false
   end
 
+  create_table "join_user_allergy_tables", force: :cascade do |t|
+    t.string "users"
+    t.string "allergies"
+  end
+
   create_table "parties", force: :cascade do |t|
     t.string   "name"
     t.integer  "month"
@@ -79,7 +84,6 @@ ActiveRecord::Schema.define(version: 20150806220726) do
     t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "year"
     t.date     "date"
   end
 
@@ -87,27 +91,6 @@ ActiveRecord::Schema.define(version: 20150806220726) do
     t.integer "party_id", null: false
     t.integer "user_id",  null: false
   end
-
-  create_table "relationships", force: :cascade do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
-
-  create_table "test_resources", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "friend_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "test_resources", ["friend_id"], name: "index_test_resources_on_friend_id", using: :btree
-  add_index "test_resources", ["user_id"], name: "index_test_resources_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -130,7 +113,5 @@ ActiveRecord::Schema.define(version: 20150806220726) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "test_resources", "friends"
-  add_foreign_key "test_resources", "users"
   add_foreign_key "users", "diets"
 end

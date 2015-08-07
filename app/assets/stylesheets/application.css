@@ -18,16 +18,21 @@
  */
 .nav {
 	background-color: rgba(48,48,48,.9);
+
 }
 .navbar-brand {
 	background-color: rgba(250,129,68,.9);
 	border-radius: 20px;
+
 }
 ul.nav.navbar {
 	background-color: rgba(250,129,68,.9);
 }
+.navbar-nav {
+	color: black;
+}
 li{
-	display: inline;
+	display: inline
 	margin: 6px;
 }
 #row-height-check{
@@ -35,8 +40,8 @@ li{
 }
 
 body {
-/*	background-image: url(http://www.housepict.us/wp-content/uploads/2015/04/wood-desk-background-hd-j3iq0wxn.jpg);
-*/	background-size: cover;
+	/*background-image: url(http://www.housepict.us/wp-content/uploads/2015/04/wood-desk-background-hd-j3iq0wxn.jpg);
+	*/background-size: cover;
 }
 
 img{
@@ -48,15 +53,15 @@ img{
 .thumbnail{
 	background-color: rgba(48,48,48,.85);
 }
-h1 {
-	background-color: rgba(800,900,604,.8);
-}
 div.radio{
-	}
 
+	}
+.form-group {
+    margin-bottom: 15px;
+    color: white;
+    background-color: rgba(48,48,48,.8);
+}
 .col-md-4{
 	max-height: 250px;
 	position: relative;
-}
-
 }
