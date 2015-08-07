@@ -1,22 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container">
-<div class="row">
-<div class="col-md-6 col-md-offset-3" style="text-align: center; margin: 0 auto">
-<h4> Search for a fellow snacker </h4>
-<%= form_tag friendships_path, method: :get do %>
-  <%= text_field_tag :search_query, params[:search_query], placeholder: 'Find a snacker' %>
-  <%= submit_tag "Search" %>
-<% end %>
+<div class="container this-container">
 
-<% if @potential_friends.presence %>
-  <% @potential_friends.each do |ptl| %>
-    <p> <%= link_to  "#{ptl.name}", user_path(ptl)%> <%= link_to "Add Friend", friendships_path(:friend_id => ptl), :method => :post, class: "btn btn-default btn-sm" %> </p>
-<% end %>
-<% end %>
+<div class="row show-row-1">
+<div class="col-md-12">
+<h4>Fellow Snackers</h4>
+      <% if !current_user.friends.presence %>
+        You don't have any fellow snackers 
+      <% else %>
+        <% current_user.friends.each do |friend| %>
+        <p>   <%= link_to "#{friend.name}", user_path(friend) %> 
+          <%= link_to "Remove", friendship_path(:id => friend), :method => :delete, class: "btn btn-default btn-sm", style:"background-color: rgba(196, 216, 226, 1); border-radius: 10px; color: black" %> </p>
+       
+      <% end %>
+      <% end %>
+</div>
 </div>
 
-<div class="col-md-6">
+<div class="row show-row-2">
+<div class="col-md-12">
 <h4>Snacker Requests</h4>
   <% if !current_user.requested_friendships.presence %>
       <strong> No snacker requests </strong>
@@ -33,18 +35,26 @@
   <% end %>
   </div>
   </div>
+  <div class="row show-row-3">
+  <div class="col-md-12">
+  <div style="text-align: center; margin: 0 auto">
+  <%= form_tag friendships_path, style: "text-align: center; margin: 10px 0 0 0", method: :get do %>
+    <%= text_field_tag :search_query, params[:search_query], placeholder: 'Find a snacker', style:"color: black" %>
+    <%= submit_tag "Search", style:"background-color: rgba(196, 216, 226, 1); border-radius: 10px; color: black"  %>
+  <% end %>
   </div>
 
-<h4>Fellow Snackers</h4>
-      <% if !current_user.friends.presence %>
-        You don't have any fellow snackers 
-      <% else %>
-        <% current_user.friends.each do |friend| %>
-        <p>   <%= link_to "#{friend.name}", user_path(friend) %> 
-          <%= link_to "Remove", friendship_path(:id => friend), :method => :delete, class: "btn btn-default btn-sm" %> </p>
-       
-      <% end %>
-      <% end %>
+  <% if @potential_friends.presence %>
+    <% @potential_friends.each do |ptl| %>
+      <p style="margin: 10px"> <%= link_to  "#{ptl.name}", user_path(ptl)%> <%= link_to "Add Friend", friendships_path(:friend_id => ptl), :method => :post, class: "btn btn-default btn-sm", style:"background-color: rgba(196, 216, 226, 1); border-radius: 10px; color: black"%> </p>
+  <% end %>
+  <% end %>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
 
 
 
