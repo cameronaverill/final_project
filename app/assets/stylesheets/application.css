@@ -79,8 +79,7 @@ div.radio{
 	}
 .form-group {
     margin-bottom: 15px;
-    color: white;
-    background-color: rgba(48,48,48,.8);
+    color: black;
 
 .caption {
 	height: 50px;
@@ -115,4 +114,6 @@ div.radio{
 #show-header{
 	margin: 20px;
 }
-
+form.button_to {
+	text-align: center;
+}

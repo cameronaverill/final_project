@@ -1,5 +1,5 @@
 <h1> Your Parties </h1>
-<p> <%= button_to 'New Party', new_party_path, method: :get, class: "btn btn-default btn-sm"  %>
+<p> <%= button_to 'New Party', new_party_path, method: :get, class: "btn btn-default btn-sm", style:"margin: 0 auto"  %> 
 
 <% if @parties.presence %>
 <% @parties.each do |party| %>
