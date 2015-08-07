@@ -1,15 +1,17 @@
 <h1> Add Snack to the Party </h1>
 <div style: "margin: 0 auto; text-align: center">
 <%= form_tag party_create_party_dish_path(@party), method: :put do %>
-    <%= text_field_tag :party_query, @party_query, placeholder: 'Find a snack', style: "margin: 0 auto; display: block" %>
-<%= submit_tag "Search", style: "display: block; margin: 0 auto, background-color: rgba(196, 216, 226, 1); border-radius: 10px; color: black" %>
+<div class="container" style="margin: 0 auto; display: block; text-align: center"> 
+    <%= text_field_tag :party_query, @party_query, placeholder: 'Find a snack' %>
+<%= submit_tag "Search", style:  "background-color: rgba(196, 216, 226, 1); border-radius: 10px; color: black" %>
+</div>
 <% end %>
 
 <% if @dishes.presence && @party_query.presence %>
 	<% @dishes.each do |dish| %>
 	<% if Dish.find_by(query_id: dish["id"]) %>
 		<% current_dish = Dish.find_by(query_id: dish["id"]) %>
-		<p> <%= link_to  "#{current_dish.name}", user_dish_path(current_user, current_dish) %> | <p style="position: inline"> <%= image_tag "#{current_dish.image}" %> </p> <%=link_to add_dish_path(@party, current_dish), class: "btn btn-default btn-sm" do %>
+		<p> <%= link_to  "#{current_dish.name}", user_dish_path(current_user, current_dish) %> | <p style="position: inline"> <%= image_tag "#{current_dish.image}" %> </p> <%=link_to add_dish_path(@party, current_dish), class: "btn btn-default btn-sm", style:"color: black" do %>
       Save Snack to Party
   <%end %>  </p> 
 	<% else %>
@@ -26,7 +28,7 @@
   		<% response = new_response.body %>
   		<% new_descrip = second_response.body["summary"] %>
  		<% current_dish = Dish.create query_id: dish["id"], name: dish["title"], url: response["sourceUrl"], vegan: response["vegan"], vegetarian: response["vegetarian"], cheap: response["cheap"], servings: response["servings"], gluten_free: response["glutenFree"], image: "https://webknox.com/recipeImages/#{response["image"]}", description: new_descrip %>
-		<p> <%= link_to  "#{current_dish.name}", user_dish_path(current_user, current_dish) %> | <p style="position: inline"> <%= image_tag "#{current_dish.image}" %> </p> <%=link_to add_dish_path(@party, current_dish), class: "btn btn-default btn-sm" do %>
+		<p> <%= link_to  "#{current_dish.name}", user_dish_path(current_user, current_dish) %> | <p style="position: inline"> <%= image_tag "#{current_dish.image}" %> </p> <%=link_to add_dish_path(@party, current_dish), class: "btn btn-default btn-sm", style:"color: black" do %>
   	  Save Snack to Party
   <%end %>  </p> 
 	<% end %>

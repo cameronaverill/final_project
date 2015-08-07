@@ -1,18 +1,39 @@
-<h1> <%= @party.name %> </h1> 
-<p> <%= button_to 'Attend', party_attend_path(@party), method: :post, class: "btn btn-default btn-sm"  %> <%= button_to 'Edit Party', edit_party_path(@party), method: :get, class: "btn btn-default btn-sm", style:"text-align: center; margin: 0 auto; display: block"  %> </p>
+<div style="margin: -25px 0 0 0">
+<h1> <%= @party.name %> </h1>
+<h3 style="margin: -2px"> <small> <%= @party.date.to_formatted_s(:long)  %> </small> </h3> 
+<h3 style="margin: -2px"> <small> <%= @party.location  %></small> </h3> 
+<div class="container" style="margin: 0 auto; display: block; text-align: center"> 
+<div style="float: left; margin: 0 auto; text-align: center">
+<%= button_to 'Add Snacks to Party', party_create_party_dish_path(@party), method: :put, class: "btn btn-default btn-sm", style: "background: gray; border-radius: 5px; margin: 0 auto"  %> 
+</div>
+<div style="float: left">
+<%= button_to 'Edit Party', edit_party_path(@party), method: :get, class: "btn btn-default btn-sm", style:"background: gray; border-radius: 5px; margin: 0 auto"  %> 
+</div>
+</div>
+<hr>
+</div>
+<h3 style="margin: -5px 0 3px 0"> Party Snacks </h3> <hr>
 <div class="container">
-<p> <strong> When? </strong> <%= @party.date.to_formatted_s(:long)  %>
-<p> <strong> Where? </strong> <%= @party.location  %>
-<p> <strong> Who? </strong> <br /> 
-<% @party.users.each do |user| %>
-	<p> <%= link_to "#{user.name}", user_path(user) %> </p>
-<% end %>
-<p> <strong> What are we eating? </strong> </p>
-<% @party.dishes.each do |dish| %>
-	<p> <%= link_to "#{dish.name}", user_dish_path(current_user, dish) %> </p>
-<% end %>
+<% @party.dishes.each_slice(3) do |row| %>
+        <div class="row text-center" id="row-height-check">
+        	<% row.each do |dish| %>
+            <div class="col-md-4 hero-feature" id = "div-height">
+                <div class="thumbnail">
+                    <%= link_to (image_tag dish.image, class:'img-responsive'), user_dish_path(current_user, dish) %> 
+                    <div class="caption">
+                         <%= link_to dish.name, user_dish_path(current_user, dish), class:"caption-text" %>
+                    </div>
+                </div>
+            </div>
+            <%end%>
+        </div>
+        <%end%>
+        <!-- /.row -->
+        <!-- Footer -->
+</div>
 
-<p> <%= button_to 'Add Snacks to Party', party_create_party_dish_path(@party), method: :put, class: "btn btn-default btn-sm", style: "display: block; margin: 0 auto"  %> </p>
+
+
 
 
 

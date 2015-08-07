@@ -35,14 +35,14 @@ class DishesController < ApplicationController
 		  #change number in the get request for demonstration; right now keep it at 1 for purpose of keeping requests down
 		  if @diet != 'none' 
 		    if @intolerances.presence
-		      response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/search?diet=#{@diets}&query=#{@party_query}&intolerances=#{@intolerances}&number=1" , 
+		      response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/search?diet=#{@diets}&query=#{@party_query}&intolerances=#{@intolerances}&number=6" , 
 		      headers:{
 		      "X-Mashape-Key" => "8nBXNLJkYlmshUJzjuIrdsM2ciHpp1JTDOmjsnF4J7juwQORb1",
 		      "Accept" => "application/json"
 		      }
 		      @dishes = (response.body)["results"]
 		    else
-		      response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/search?diet=#{@diets}&query=#{@party_query}&number=1" , 
+		      response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/search?diet=#{@diets}&query=#{@party_query}&number=6" , 
 		      headers:{
 		      "X-Mashape-Key" => "8nBXNLJkYlmshUJzjuIrdsM2ciHpp1JTDOmjsnF4J7juwQORb1",
 		      "Accept" => "application/json"
@@ -51,14 +51,14 @@ class DishesController < ApplicationController
 		    end
 		  else 
 		    if @intolerances.presence
-		      response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/search?query=#{@party_query}&intolerances=#{@intolerances}&number=1" , 
+		      response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/search?query=#{@party_query}&intolerances=#{@intolerances}&number=6" , 
 		      headers:{
 		      "X-Mashape-Key" => "8nBXNLJkYlmshUJzjuIrdsM2ciHpp1JTDOmjsnF4J7juwQORb1",
 		      "Accept" => "application/json"
 		      }
 		      @dishes = (response.body)["results"]
 		    else
-		      response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/search?query=#{@party_query}&number=1" , 
+		      response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/search?query=#{@party_query}&number=6" , 
 		      headers:{
 		      "X-Mashape-Key" => "8nBXNLJkYlmshUJzjuIrdsM2ciHpp1JTDOmjsnF4J7juwQORb1",
 		      "Accept" => "application/json"
