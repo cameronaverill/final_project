@@ -28,6 +28,9 @@ h2{
 }
 .nav {
 	background-color: rgba(48,48,48,.9);
+
+
+
 	font-family: 'Oswald', sans-serif;
 }
 
@@ -38,13 +41,17 @@ h2{
 .navbar-brand {
 	background-color: rgba(250,129,68,.9);
 	border-radius: 20px;
+
 }
 ul.nav.navbar {
 	background-color: rgba(250,129,68,.9);
 	font-family: 'Oswald', sans-serif;
 }
+.navbar-nav {
+	color: black;
+}
 li{
-	display: inline;
+	display: inline
 	margin: 6px;
 }
 #row-height-check{
@@ -57,6 +64,7 @@ body {
 */	background-size: cover;
 	background-color: rgba(196, 216, 226, 1);
 	font-family: 'Oswald', sans-serif;
+
 }
 
 img{
@@ -70,7 +78,15 @@ img{
 	height: 300px;
 	padding: 10px;
 }
-.caption{
+<<<<<<< HEAD
+div.radio{
+
+	}
+.form-group {
+    margin-bottom: 15px;
+    color: black;
+
+.caption {
 	height: 50px;
 	bottom: 10px;
 	position: absolute;

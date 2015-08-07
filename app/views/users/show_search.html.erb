@@ -1,32 +1,45 @@
 <h1> Search Results </h1>
 
+
+
 <% if @dishes.presence && @query.presence %>
-	<% @dishes.each do |dish| %>
-	<% if Dish.find_by(query_id: dish["id"]) %>
-		<% current_dish = Dish.find_by(query_id: dish["id"]) %>
-		<p> <%= link_to  "#{current_dish.name}", user_dish_path(@user, current_dish) %> | <p style="position: inline"> <%= image_tag "#{current_dish.image}" %> </p> <%=link_to add_dish_dish_path(current_dish), method: :put, class: "btn btn-default btn-sm" do %>
-  	  Save Snack
-  <%end %>  </p> 
-	<% else %>
-		<% new_response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/#{dish["id"]}/information",
-  			headers:{
-    		"X-Mashape-Key" => "8nBXNLJkYlmshUJzjuIrdsM2ciHpp1JTDOmjsnF4J7juwQORb1",
-    		"Accept" => "application/json"
-  			} %>
-  		<% second_response =  Unirest.get "https://webknox-recipes.p.mashape.com/recipes/#{dish["id"]}/summary",
-        headers:{
-          "X-Mashape-Key" => "8nBXNLJkYlmshUJzjuIrdsM2ciHpp1JTDOmjsnF4J7juwQORb1",
-          "Accept" => "application/json"
-        } %>
-  		<% response = new_response.body %>
-  		<% new_descrip = second_response.body["summary"] %>
- 		<% current_dish = Dish.create query_id: dish["id"], name: dish["title"], url: response["sourceUrl"], vegan: response["vegan"], vegetarian: response["vegetarian"], cheap: response["cheap"], servings: response["servings"], gluten_free: response["glutenFree"], image: "https://webknox.com/recipeImages/#{response["image"]}", description: new_descrip %>
-		<p> <%= link_to  "#{current_dish.name}", user_dish_path(@user, current_dish) %> | <p style="position: inline"> <%= image_tag "#{current_dish.image}" %> </p> <%=link_to add_dish_dish_path(current_dish), method: :put, class: "btn btn-default btn-sm" do %>
-  	  Save Snack
-  <%end %>  </p> 
-	<% end %>
-<%end%>
+  
+  <% @dishes.each_slice(3) do |row| %>
+
+    <div class="row text-center" id="row-height-check">
+    <% row.each do |dish| %>
+      <% if Dish.find_by(query_id: dish["id"]) %>
+        <% current_dish = Dish.find_by(query_id: dish["id"]) %>
+      <% else %>
+        <% new_response = Unirest.get "https://webknox-recipes.p.mashape.com/recipes/#{dish["id"]}/information",
+            headers:{
+            "X-Mashape-Key" => "8nBXNLJkYlmshUJzjuIrdsM2ciHpp1JTDOmjsnF4J7juwQORb1",
+            "Accept" => "application/json"
+            } %>
+          <% second_response =  Unirest.get "https://webknox-recipes.p.mashape.com/recipes/#{dish["id"]}/summary",
+            headers:{
+              "X-Mashape-Key" => "8nBXNLJkYlmshUJzjuIrdsM2ciHpp1JTDOmjsnF4J7juwQORb1",
+              "Accept" => "application/json"
+            } %>
+          <% response = new_response.body %>
+          <% new_descrip = second_response.body["summary"] %>
+        <% current_dish = Dish.create query_id: dish["id"], name: dish["title"], url: response["sourceUrl"], vegan: response["vegan"], vegetarian: response["vegetarian"], cheap: response["cheap"], servings: response["servings"], gluten_free: response["glutenFree"], image: "https://webknox.com/recipeImages/#{response["image"]}", description: new_descrip %>
+      <% end %>
+
+      <div class="col-md-4 hero-feature" id = "div-height">
+        <div class="thumbnail">
+            <%= link_to (image_tag current_dish.image, class:'img-responsive'), user_dish_path(@user, current_dish) %> 
+            <div class="caption">
+                 <%= link_to current_dish.name, user_dish_path(@user, current_dish), class:"caption-text" %>
+            </div>
+            <%= link_to "Save Snack", add_dish_dish_path(current_dish), method: :put, class: "btn btn-default btn-sm" %>
+        </div>
+      </div>
+
+
+    <%end %>
+    </div>
+  <% end %>
 <% elsif @query.presence %>
-	<p>No results found, please search again</p>
-<% else %>
+  <p>No results found, please search again</p>
 <% end %>
