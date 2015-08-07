@@ -63,8 +63,7 @@ img{
 .thumbnail{
 	background-color: rgba(48,48,48,.85);
 	height: 300px;
-	border: solid 10px rgba(250,129,68,.9);
-	border-radius: 10px;
+	padding: 10px;
 }
 .caption{
 	height: 50px;
@@ -98,4 +97,32 @@ div.radio{
 }
 #show-header{
 	margin: 20px;
+}
+
+.show-row-1{
+	background-color: rgba(48,48,48,1);
+	margin: -70px 0px 90px 0px;
+	padding: 25px;
+	right: 0px;
+	width: 100%;
+	color: white;
+	text-align: center;
+	min-height: 300px;
+}
+
+.show-row-2{
+	background-color: rgba(196, 216, 226, 1);
+	margin: -70px 0px 90px 0px;
+	padding: 25px;
+	right: 0px;
+	width: 100%;
+	min-height: 300px;
+}
+
+.this-container{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	right: 0px;
+	width: 100%;
 }
