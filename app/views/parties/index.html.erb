@@ -10,12 +10,12 @@
 <% index = 1 %>
 <% @parties.each do |party| %>
 <% if index % 2 == 0 %>
-	<div class="row show-row-2">
+	<div class="row show-row-5">
 	<div class="col-md-12" style="text-align: center; display: block">
 	<p> <h2> <%= link_to "#{party.name}" , party_path(party) %> </h2> <br />
-		<strong> Date: </strong> <%= party.date.to_formatted_s(:long) %> <br />
-		<strong> Location: </strong> <%= party.location %> <br />
-		<strong> Snackers Attending </strong>  <br />
+		<strong> Date: </strong> <%= party.date.to_formatted_s(:long) %> <br /> <br />
+		<strong> Location: </strong> <%= party.location %> <br /> <br />
+		<strong> Snackers Attending </strong>  <br /> <br />
 		<% party.users.each do |snacker| %>
 			<%= link_to "#{snacker.name}", user_path(snacker) %> <br />
 		<% end %>
@@ -24,14 +24,14 @@
 	</div>
 	<% index += 1 %>
 <% else %>
-<div class="row show-row-1">
-<div class="col-md-12">
-	<p> <h2> <%= link_to "#{party.name}" , party_path(party) %> </h2> <br />
-		<strong> Date: </strong> <%= party.date.to_formatted_s(:long) %> <br />
-		<strong> Location: </strong> <%= party.location %> <br />
-		<strong> Snackers Attending </strong>  <br />
+<div class="row show-row-4">
+<div class="col-md-12" style="text-align: center; display: block">
+	<p> <h2> <%= link_to "#{party.name}" , party_path(party) %> </h2> <br /> <br />
+		<strong> Date: </strong> <%= party.date.to_formatted_s(:long) %> <br /> <br />
+		<strong> Location: </strong> <%= party.location %> <br /> <br />
+		<strong> Snackers Attending </strong>  <br /> <br />
 		<% party.users.each do |snacker| %>
-			<%= link_to "#{snacker.name}", user_path(snacker) %> <br />
+			<%= link_to "#{snacker.name}", user_path(snacker) %> <br /> 
 		<% end %>
 		</p>
 </div>

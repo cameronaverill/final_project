@@ -1,9 +1,7 @@
 <h1> Edit My Food Preferences </h1>
-<div style="text-align: center; margin: 0 auto; display:block">
-<%= bootstrap_form_for @user do |f| %>
+<%= bootstrap_form_for @user, :html => {:class => "food-preferences-form"} do |f| %>
   <%= f.collection_radio_buttons :diet_id, Diet.all, :id, :name%> 
   <%= f.collection_check_boxes :intolerance_ids, Intolerance.all, :id, :name%> </br> 
   <%= f.submit %>
 <% end %>
-</div>
 
