@@ -29,9 +29,9 @@ class FriendshipsController < ApplicationController
       @friendship = Friendship.where(friend_id: current_user, user_id: params[:id]).first
       @friendship.update(approved: true)
         if @friendship.save
-          redirect_to root_url
+          redirect_to :back
         else
-          redirect_to root_url
+          redirect_to :back
         end
       end
 

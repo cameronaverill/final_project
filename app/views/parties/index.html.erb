@@ -1,17 +1,44 @@
+<div class="container this-container">
+<div class="row row-show-1" style="margin: -30px 0 70px 0; text-align: center">
+<div class="col-md-12">
 <h1> Your Parties </h1>
-<p> <%= button_to 'New Party', new_party_path, method: :get, class: "btn btn-default btn-sm"  %>
+<p> <%= button_to 'Throw Party', new_party_path, method: :get, class: "btn btn-default btn-sm", style:"margin: 0 auto; display: block"  %> </p>
+</div>
+</div>
 
 <% if @parties.presence %>
+<% index = 1 %>
 <% @parties.each do |party| %>
-	<p> <strong> <%= link_to "#{party.name}" , party_path(party) %> </strong> <br />
+<% if index % 2 == 0 %>
+	<div class="row show-row-2">
+	<div class="col-md-12" style="text-align: center; display: block">
+	<p> <h2> <%= link_to "#{party.name}" , party_path(party) %> </h2> <br />
 		<strong> Date: </strong> <%= party.date.to_formatted_s(:long) %> <br />
 		<strong> Location: </strong> <%= party.location %> <br />
-		<strong> Snackers Attending <strong>  <br />
+		<strong> Snackers Attending </strong>  <br />
 		<% party.users.each do |snacker| %>
 			<%= link_to "#{snacker.name}", user_path(snacker) %> <br />
 		<% end %>
 		</p>
-		<hr>
+	</div>
+	</div>
+	<% index += 1 %>
+<% else %>
+<div class="row show-row-1">
+<div class="col-md-12">
+	<p> <h2> <%= link_to "#{party.name}" , party_path(party) %> </h2> <br />
+		<strong> Date: </strong> <%= party.date.to_formatted_s(:long) %> <br />
+		<strong> Location: </strong> <%= party.location %> <br />
+		<strong> Snackers Attending </strong>  <br />
+		<% party.users.each do |snacker| %>
+			<%= link_to "#{snacker.name}", user_path(snacker) %> <br />
+		<% end %>
+		</p>
+</div>
+</div>
+<% index += 1 %>
+<% end %>
+</div>
 <% end %>
 <% end %>
 

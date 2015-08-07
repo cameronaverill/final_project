@@ -1,7 +1,8 @@
 <h1> Add Snack to the Party </h1>
+<div style: "margin: 0 auto; text-align: center">
 <%= form_tag party_create_party_dish_path(@party), method: :put do %>
-    <%= text_field_tag :party_query, @party_query, placeholder: 'Find a snack' %>
-<%= submit_tag "Search" %>
+    <%= text_field_tag :party_query, @party_query, placeholder: 'Find a snack', style: "margin: 0 auto; display: block" %>
+<%= submit_tag "Search", style: "display: block; margin: 0 auto, background-color: rgba(196, 216, 226, 1); border-radius: 10px; color: black" %>
 <% end %>
 
 <% if @dishes.presence && @party_query.presence %>

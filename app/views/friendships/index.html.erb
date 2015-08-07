@@ -23,15 +23,13 @@
   <% if !current_user.requested_friendships.presence %>
       <strong> No snacker requests </strong>
   <% else %>
-        <ul>
             <% current_user.requested_friendships.each do |request| %>
-            <li>
-              <%= link_to "#{request.name}", user_path(request) %> 
-              <%= link_to "Accept", friendship_path(:id => request), :method => "put" %> 
-              <%= link_to "Decline", friendship_path(:id => request), :method => :delete %>
-            </li>
+              <h3> <%= link_to "#{request.name}", user_path(request), style:"background-color: rgba(196, 216, 226, 1); border-radius: 10px; color: black" %>  </h3>
+              <%= link_to "Accept", friendship_path(:id => request), :method => "put", style:"background-color: rgba(196, 216, 226, 1); border-radius: 10px; color: black", class: "btn btn-default btn-sm" %> 
+              <%= link_to "Decline", friendship_path(:id => request), :method => :delete, style:"background-color: rgba(196, 216, 226, 1); border-radius: 10px; color: black", class: "btn btn-default btn-sm" %>
+            <br />
+            <br />
           <% end %>
-        </ul>
   <% end %>
   </div>
   </div>

@@ -22,6 +22,10 @@
 h1{
 	font-family: 'Oswald', sans-serif;
 }
+
+h2{
+	font-family: 'Oswald', sans-serif;
+}
 .nav {
 	background-color: rgba(48,48,48,.9);
 	font-family: 'Oswald', sans-serif;
@@ -52,6 +56,7 @@ body {
 /*	background-image: url(http://www.housepict.us/wp-content/uploads/2015/04/wood-desk-background-hd-j3iq0wxn.jpg);
 */	background-size: cover;
 	background-color: rgba(196, 216, 226, 1);
+	font-family: 'Oswald', sans-serif;
 }
 
 img{
@@ -94,9 +99,11 @@ div.radio{
 .col-md-4{
 	max-height: 250px;
 	position: relative;
+	font-family: 'Oswald', sans-serif;
 }
 #show-header{
 	margin: 20px;
+	font-family: 'Oswald', sans-serif;
 }
 
 .show-row-1{
@@ -108,6 +115,7 @@ div.radio{
 	color: white;
 	text-align: center;
 	min-height: 300px;
+	font-family: 'Oswald', sans-serif;
 }
 
 .show-row-2{
@@ -117,6 +125,7 @@ div.radio{
 	right: 0px;
 	width: 100%;
 	min-height: 300px;
+	font-family: 'Oswald', sans-serif;
 }
 
 .show-row-3{
@@ -128,6 +137,7 @@ div.radio{
 	color: white;
 	text-align: center;
 	min-height: 300px;
+	font-family: 'Oswald', sans-serif;
 }
 
 .this-container{
@@ -136,4 +146,5 @@ div.radio{
 	text-align: center;
 	right: 0px;
 	width: 100%;
+	font-family: 'Oswald', sans-serif;
 }
