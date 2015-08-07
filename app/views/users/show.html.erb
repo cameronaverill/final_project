@@ -6,7 +6,7 @@
   <% end %>
 <%end%>
 
-<h1> <div> <%=@user.name%>'s Saved Snacks </div> </h1>
+<h1 id="show-header"> <div> <%=@user.name%>'s Saved Snacks </div> </h1>
 
 <% else %>
 <h1> Hello, <%=@user.email%>! <%=link_to 'Update your display name', edit_user_registration_path %> </h1>
@@ -18,15 +18,13 @@
  
 <!-- Page Features -->
         <% @user_dishes.each_slice(3) do |row| %>
-        <div class="row text-center">
+        <div class="row text-center" id="row-height-check">
         	<% row.each do |dish| %>
             <div class="col-md-4 hero-feature" id = "div-height">
                 <div class="thumbnail">
                     <%= link_to (image_tag dish.image, class:'img-responsive'), user_dish_path(@user, dish) %> 
                     <div class="caption">
-                         <%= link_to dish.name, user_dish_path(@user, dish) %>                    
-                        <p>
-                        </p>
+                         <%= link_to dish.name, user_dish_path(@user, dish), class:"caption-text" %>
                     </div>
                 </div>
             </div>
